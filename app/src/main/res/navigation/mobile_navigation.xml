@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/mobile_navigation"
+    app:startDestination="@+id/nav_home">
+
+    <fragment
+        android:id="@+id/nav_home"
+        android:name="hu.bme.aut.debter.ui.home.HomeFragment"
+        android:label="@string/menu_home"
+        tools:layout="@layout/home_fragment" />
+
+    <fragment
+        android:id="@+id/nav_history"
+        android:name="hu.bme.aut.debter.ui.history.HistoryFragment"
+        android:label="@string/history"
+        tools:layout="@layout/history_fragment" />
+
+    <fragment
+        android:id="@+id/nav_debts"
+        android:name="hu.bme.aut.debter.ui.debts.DebtsFragment"
+        android:label="@string/debts"
+        tools:layout="@layout/debts_fragment" />
+
+    <fragment
+        android:id="@+id/nav_settings"
+        android:name="hu.bme.aut.debter.ui.settings.SettingsFragment"
+        android:label="@string/action_settings"
+        tools:layout="@layout/settings_fragment" />
+
+
+    <fragment
+        android:id="@+id/nav_payment"
+        android:name="hu.bme.aut.debter.ui.history.HistoryFragment"
+        android:label="Payment"
+        tools:layout="@layout/history_fragment" />
+
+</navigation>
