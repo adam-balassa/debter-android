@@ -18,7 +18,7 @@
     <string name="password">Password</string>
     <string name="login">Login</string>
     <string name="no_account">Don\'t have an account yet?</string>
-    <string name="register">Register</string>
+    <string name="register">REGISTER</string>
     <string name="title_activity_navigation">NavigationActivity</string>
     <string name="navigation_drawer_open">Open navigation drawer</string>
     <string name="navigation_drawer_close">Close navigation drawer</string>
@@ -36,4 +36,5 @@
     <string name="history">History</string>
     <string name="debts">Debts</string>
     <string name="go_back">Go back</string>
+    <string name="included_members">INCLUDED MEMBERS</string>
 </resources>

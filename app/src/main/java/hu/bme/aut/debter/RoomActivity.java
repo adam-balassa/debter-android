@@ -10,11 +10,14 @@ import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.android.material.snackbar.Snackbar;
 
 import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.core.view.GravityCompat;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentTransaction;
 import androidx.navigation.NavController;
+import androidx.navigation.NavOptions;
 import androidx.navigation.Navigation;
+import androidx.navigation.fragment.FragmentNavigator;
 import androidx.navigation.ui.AppBarConfiguration;
 import androidx.navigation.ui.NavigationUI;
 
@@ -27,8 +30,7 @@ import androidx.appcompat.widget.Toolbar;
 
 import hu.bme.aut.debter.ui.history.HistoryFragment;
 
-public class RoomActivity extends AppCompatActivity
-        implements NavigationView.OnNavigationItemSelectedListener {
+public class RoomActivity extends AppCompatActivity {
 
     private AppBarConfiguration mAppBarConfiguration;
     private NavController navController;
@@ -41,7 +43,6 @@ public class RoomActivity extends AppCompatActivity
 
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
-
 
         configureNavigationBar();
     }
@@ -67,23 +68,12 @@ public class RoomActivity extends AppCompatActivity
         NavigationUI.setupWithNavController(navigationView, navController);
     }
 
-    public void navigateToPayment() {
-        this.runOnUiThread(() -> {
-            navController.navigate(R.id.nav_payment);
-        });
-    }
 
-    @Override
-    public boolean onNavigationItemSelected(@NonNull MenuItem menuItem) {
-        Log.w("develop", "Click");
-        switch (menuItem.getItemId()) {
-            case R.id.nav_back: {
-                Toast.makeText(getBaseContext(), "Back", Toast.LENGTH_LONG).show();
-            }
+    public static class GoBack extends Fragment {
+        @Override
+        public void onCreate(@Nullable Bundle savedInstanceState) {
+            super.onCreate(savedInstanceState);
+            getActivity().finish();
         }
-
-        DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
-        drawer.closeDrawer(GravityCompat.START);
-        return true;
     }
 }

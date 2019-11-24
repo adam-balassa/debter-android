@@ -37,7 +37,7 @@
                 android:id="@+id/payment_note"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:textSize="17sp"
+                android:textSize="18sp"
                 android:textColor="#000000"
                 android:ellipsize="end"
                 android:maxLines="1"
@@ -62,7 +62,9 @@
                     android:id="@+id/payment_date"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:textSize="15sp"/>
+                    android:textSize="15sp"
+                    android:ellipsize="end"
+                    android:maxLines="1"/>
             </LinearLayout>
 
         </LinearLayout>
