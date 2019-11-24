@@ -32,8 +32,27 @@
 
     <fragment
         android:id="@+id/nav_payment"
-        android:name="hu.bme.aut.debter.ui.history.HistoryFragment"
+        android:name="hu.bme.aut.debter.ui.payment.PaymentFragment"
         android:label="Payment"
-        tools:layout="@layout/history_fragment" />
+        tools:layout="@layout/payment_fragment" >
+        <action
+            android:id="@+id/mainToSearch"
+            app:destination="@id/mobile_navigation"
+            app:enterAnim="@android:anim/fade_in"
+            app:exitAnim="@android:anim/fade_out"
+            app:popEnterAnim="@android:anim/fade_in"
+            app:popExitAnim="@android:anim/fade_out"/>
+    </fragment>
+
+
+    <fragment
+        android:id="@+id/nav_new_payment"
+        android:name="hu.bme.aut.debter.ui.new_payment.NewPaymentFragment"
+        android:label="New payment"
+        tools:layout="@layout/new_payment_fragment" />
+
+    <fragment
+        android:id="@+id/nav_back"
+        android:name="hu.bme.aut.debter.RoomActivity$GoBack"/>
 
 </navigation>

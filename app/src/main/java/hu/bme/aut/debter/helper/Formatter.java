@@ -9,6 +9,7 @@ import java.util.LinkedList;
 import java.util.List;
 import java.util.Locale;
 
+import hu.bme.aut.debter.model.Debt;
 import hu.bme.aut.debter.model.Payment;
 
 public class Formatter {
@@ -16,6 +17,12 @@ public class Formatter {
     public static String formatPaymentValue(Payment payment) {
         double value = payment.getValue();
         String currency = payment.getCurrency();
+        return addCurrency(getFormattedValue(value), currency);
+    }
+
+    public static String formatDebtValue(Debt debt) {
+        double value = debt.getValue();
+        String currency = debt.getCurrency();
         return addCurrency(getFormattedValue(value), currency);
     }
 
@@ -76,6 +83,13 @@ public class Formatter {
     public static String formatDate(Date date) {
         SimpleDateFormat formatter =
                 new SimpleDateFormat(getDateFormat(date.getTime()), Locale.ENGLISH);
+
+        return formatter.format(date);
+    }
+
+    public static String formatFullDate(Date date) {
+        SimpleDateFormat formatter =
+                new SimpleDateFormat("y MMM d. H:mm:ss", Locale.ENGLISH);
 
         return formatter.format(date);
     }

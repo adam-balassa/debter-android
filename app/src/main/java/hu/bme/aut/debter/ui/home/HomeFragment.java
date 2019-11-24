@@ -11,11 +11,14 @@ import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProviders;
+import androidx.navigation.NavOptions;
+import androidx.navigation.Navigation;
 
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.android.material.snackbar.Snackbar;
 
 import hu.bme.aut.debter.R;
+import hu.bme.aut.debter.RoomActivity;
 
 public class HomeFragment extends Fragment {
 
@@ -25,10 +28,6 @@ public class HomeFragment extends Fragment {
         homeViewModel = ViewModelProviders.of(this).get(HomeViewModel.class);
 
         View root = inflater.inflate(R.layout.home_fragment, container, false);
-
-        final TextView textView = root.findViewById(R.id.text_home);
-        homeViewModel.getText().observe(this, textView::setText);
-
         configureNewPaymentButton(root);
 
         return root;
@@ -36,9 +35,13 @@ public class HomeFragment extends Fragment {
 
     private void configureNewPaymentButton(View root) {
         FloatingActionButton fab = root.findViewById(R.id.fab);
-        fab.setOnClickListener(view ->
-                Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
-                        .setAction("Action", null).show());
+        NavOptions navOptions = new NavOptions.Builder()
+                .setEnterAnim(android.R.anim.fade_in)
+                .setExitAnim(android.R.anim.fade_out)
+                .setPopExitAnim(android.R.anim.fade_out)
+                .build();
+
+        fab.setOnClickListener(view -> Navigation.findNavController(root).navigate(R.id.nav_new_payment, new Bundle(), navOptions));
     }
 
 }

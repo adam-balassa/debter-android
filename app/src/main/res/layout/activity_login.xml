@@ -49,20 +49,21 @@
             android:layout_height="wrap_content"
             android:layout_gravity="center"
             android:layout_marginTop="20dp"
-            style="@style/Widget.AppCompat.Button.Colored"
+            style="@android:style/Widget.Material.Button.Colored"
             android:text="@string/login" />
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
-            android:layout_marginTop="10dp"
+            android:layout_marginVertical="10dp"
             android:text="@string/no_account" />
-        <Button
+        <TextView
             android:id="@+id/btnRegistrate"
             android:layout_width="150sp"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
-            style="@style/Widget.AppCompat.Button.Borderless.Colored"
+            android:textColor="@color/colorAccent"
+            style="@style/Widget.AppCompat.Button.Borderless"
             android:text="@string/register" />
 
     </LinearLayout>
