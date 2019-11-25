@@ -14,7 +14,7 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Who payed?" />
+            android:text="@string/who_payed" />
 
         <Spinner
             android:id="@+id/new_payment_who_payed"
@@ -25,7 +25,7 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="How much?" />
+            android:text="@string/how_much" />
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -70,7 +70,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="20dp"
-            android:text="Included" />
+            android:text="@string/included" />
 
         <com.google.android.flexbox.FlexboxLayout
             android:id="@+id/payment_included"
@@ -87,7 +87,7 @@
             android:layout_gravity="center"
             android:layout_marginTop="20dp"
             style="@style/Widget.AppCompat.Button.Colored"
-            android:text="Upload" />
+            android:text="@string/upload" />
 
 
     </LinearLayout>

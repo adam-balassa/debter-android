@@ -43,7 +43,7 @@ public class HomeActivity extends AppCompatActivity{
         NavigationView navigationView = findViewById(R.id.home_nav_view);
 
         mAppBarConfiguration = new AppBarConfiguration.Builder(
-                R.id.nav_my_rooms, R.id.nav_my_debts, R.id.nav_settings)
+                R.id.nav_my_rooms, R.id.nav_my_debts, R.id.nav_settings, R.id.nav_bank_accounts)
                 .setDrawerLayout(drawer).build();
         navController = Navigation.findNavController(this, R.id.nav_host_fragment_home);
 

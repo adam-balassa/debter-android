@@ -20,7 +20,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textSize="17sp"
-            android:text="Order by: " />
+            android:text="@string/order_by" />
 
         <TextView
             android:layout_marginLeft="20dp"
@@ -28,7 +28,7 @@
             android:layout_height="wrap_content"
             android:textSize="17sp"
             android:textColor="@color/colorAccent"
-            android:text="Date" />
+            android:text="@string/date" />
     </LinearLayout>
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/history_payments"
