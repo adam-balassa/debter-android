@@ -3,7 +3,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:layout_margin="16dp"
+    android:padding="16dp"
+    android:background="@drawable/light_gradient_blue_bg"
     tools:context="hu.bme.aut.debter.LoginActivity">
     <LinearLayout
         android:layout_marginTop="60dp"

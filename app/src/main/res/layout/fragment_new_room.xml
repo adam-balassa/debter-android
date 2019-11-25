@@ -4,7 +4,8 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:layout_margin="16dp">
+    android:background="@drawable/light_gradient_blue_bg"
+    android:padding="16dp">
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -13,7 +14,7 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Title" />
+            android:text="@string/title" />
 
         <EditText
             android:id="@+id/new_room_title"
@@ -29,7 +30,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="20dp"
-            android:text="Add users" />
+            android:text="@string/add_users" />
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -42,12 +43,6 @@
                 android:layout_weight="3"
                 android:orientation="vertical">
 
-<!--                <EditText-->
-<!--                    android:id="@+id/new_room_add_user"-->
-<!--                    android:layout_width="match_parent"-->
-<!--                    android:layout_height="wrap_content"-->
-<!--                    android:inputType="text"-->
-<!--                    android:autofillHints="user"/>-->
                 <AutoCompleteTextView
                     android:id="@+id/new_room_add_user_autocomplete"
                     android:layout_width="match_parent"
@@ -65,7 +60,7 @@
                 android:layout_marginLeft="10dp"
                 style="@style/Widget.AppCompat.Button.Colored"
                 android:drawableLeft="@drawable/ic_add_user"
-                android:text="Add" />
+                android:text="@string/add" />
         </LinearLayout>
 
         <com.google.android.flexbox.FlexboxLayout
@@ -75,8 +70,6 @@
             android:layout_marginTop="20dp"
             app:flexWrap="wrap">
             <com.google.android.material.chip.Chip
-                xmlns:android="http://schemas.android.com/apk/res/android"
-                xmlns:app="http://schemas.android.com/apk/res-auto"
                 android:id="@+id/active_user_chip"
                 style="@style/Widget.MaterialComponents.Chip.Action"
                 android:layout_width="wrap_content"
@@ -93,7 +86,7 @@
             android:layout_gravity="center"
             android:layout_marginTop="20dp"
             style="@style/Widget.AppCompat.Button.Colored"
-            android:text="Create" />
+            android:text="@string/create" />
 
 
     </LinearLayout>

@@ -11,7 +11,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="20dp"
-        android:text="Rounding" />
+        android:text="@string/rounding" />
     <Spinner
         android:id="@+id/room_rounding"
         android:layout_width="match_parent"
@@ -26,7 +26,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="20dp"
-        android:text="Default currency" />
+        android:text="@string/main_currency" />
     <Spinner
         android:id="@+id/room_currency"
         android:layout_width="match_parent"
@@ -43,5 +43,5 @@
         android:layout_gravity="center"
         android:layout_marginTop="20dp"
         style="@style/Widget.AppCompat.Button.Colored"
-        android:text="Save changes" />
+        android:text="@string/save_changes" />
 </LinearLayout>

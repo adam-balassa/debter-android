@@ -66,6 +66,6 @@ public class PaymentFragment extends Fragment {
         chip.setChipBackgroundColor(ColorStateList.valueOf(getResources().getColor(R.color.colorAccentLight)));
         chip.setTextColor(ColorStateList.valueOf(getResources().getColor(R.color.colorAccent)));
         chip.setChipStrokeColor(ColorStateList.valueOf(getResources().getColor(R.color.colorAccent)));
-        chip.setChipStrokeWidth(4);
+        chip.setChipStrokeWidth(2);
     }
 }

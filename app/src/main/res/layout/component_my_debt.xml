@@ -45,7 +45,6 @@
                     android:textColor="#000000"
                     android:ellipsize="end"
                     android:maxLines="1"
-                    android:text="Balassa Ádám"
                     />
                 <LinearLayout
                     android:layout_width="wrap_content"
@@ -56,7 +55,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:textSize="15sp"
-                        android:text="to "/>
+                        android:text="@string/debt_to"/>
                     <TextView
                         android:id="@+id/my_debt_to"
                         android:layout_width="wrap_content"
@@ -64,7 +63,6 @@
                         android:textSize="15sp"
                         android:ellipsize="end"
                         android:textColor="#000000"
-                        android:text="Faragó Teodóra"
                         android:maxLines="1"/>
                 </LinearLayout>
 
@@ -81,8 +79,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:textSize="17sp"
-                    android:textColor="#000000"
-                    android:text="12 000 Ft"/>
+                    android:textColor="#000000"/>
             </LinearLayout>
         </LinearLayout>
     </LinearLayout>
@@ -98,7 +95,7 @@
             android:layout_width="110sp"
             android:layout_height="40dp"
             android:layout_gravity="center"
-            android:text="Arrange" />
+            android:text="@string/debt_arrange" />
         <TextView
             android:id="@+id/my_debt_mark_as_arranged"
             android:layout_width="wrap_content"
@@ -107,7 +104,7 @@
             android:textColor="@color/colorAccent"
             android:layout_marginLeft="5dp"
             style="@style/Widget.AppCompat.Button.Borderless.Colored"
-            android:text="MARK AS ARRANGED" />
+            android:text="@string/mark_as_arranged" />
     </LinearLayout>
     <View
         android:layout_width="match_parent"

@@ -46,6 +46,31 @@
     <string name="create_new_room">Create new room</string>
     <string name="log_out">Log out</string>
     <string name="action">Action</string>
+    <string name="debt_to">to</string>
+    <string name="mark_as_arranged">MARK AS ARRANGED</string>
+    <string name="debt_arrange">Arrange</string>
+    <string name="my_debts">MY DEBTS</string>
+    <string name="all_debts">ALL DEBTS</string>
+    <string name="order_by">Order by:</string>
+    <string name="date">Date</string>
+    <string name="your_data">Your data</string>
+    <string name="you_are_included_in">You are included in</string>
+    <string name="payments">payments</string>
+    <string name="you_paid">You paid</string>
+    <string name="in_total">in total</string>
+    <string name="you_have">You have</string>
+    <string name="debt">debt</string>
+    <string name="rounding">Rounding</string>
+    <string name="main_currency">Main currency</string>
+    <string name="who_payed">Who payed?</string>
+    <string name="how_much">How much?</string>
+    <string name="included">Included</string>
+    <string name="upload">Upload</string>
+    <string name="title">Title</string>
+    <string name="add_users">Add users</string>
+    <string name="add">Add</string>
+    <string name="create">Create</string>
+    <string name="save_changes">Save changes</string>
 
     <string-array name="rounding">
         <item>0.01</item>
