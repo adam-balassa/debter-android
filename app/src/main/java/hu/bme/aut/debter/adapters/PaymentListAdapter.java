@@ -30,7 +30,7 @@ public class PaymentListAdapter extends RecyclerView.Adapter<PaymentListAdapter.
     public PaymentViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         View roomView = LayoutInflater
                 .from(parent.getContext())
-                .inflate(R.layout.list_item_payment, parent, false);
+                .inflate(R.layout.component_list_item_payment, parent, false);
         return new PaymentListAdapter.PaymentViewHolder(roomView);
     }
 

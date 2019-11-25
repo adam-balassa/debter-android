@@ -4,13 +4,21 @@ import java.util.List;
 
 public class DebterRoom extends Room {
 
-    final List<Member> members;
+    private final List<Member> members;
     private final List<Payment> payments;
+    private final double rounding;
+    private final String currency;
 
-    public DebterRoom(String r, String t, List<Member> m, List<Payment> payments) {
+    public DebterRoom(String r, String t, List<Member> m, List<Payment> payments, double ro, String c) {
         super(r, t);
         members = m;
         this.payments = payments;
+        rounding = ro;
+        currency = c;
+    }
+
+    public DebterRoom(String r, String t, List<Member> m, List<Payment> payments) {
+        this(r, t, m, payments, 1, "HUF");
     }
 
     public List<Member> getMembers() {
@@ -19,5 +27,13 @@ public class DebterRoom extends Room {
 
     public List<Payment> getPayments() {
         return payments;
+    }
+
+    public String getCurrency() {
+        return currency;
+    }
+
+    public double getRounding() {
+        return rounding;
     }
 }

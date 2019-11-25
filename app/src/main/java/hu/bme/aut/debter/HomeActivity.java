@@ -1,50 +1,54 @@
 package hu.bme.aut.debter;
 
-import android.content.Intent;
 import android.os.Bundle;
 
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
+import com.google.android.material.navigation.NavigationView;
 import com.google.android.material.snackbar.Snackbar;
 
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.recyclerview.widget.LinearLayoutManager;
-import androidx.recyclerview.widget.RecyclerView;
+import androidx.appcompat.widget.Toolbar;
+import androidx.drawerlayout.widget.DrawerLayout;
+import androidx.navigation.NavController;
+import androidx.navigation.Navigation;
+import androidx.navigation.ui.AppBarConfiguration;
+import androidx.navigation.ui.NavigationUI;
 
-import hu.bme.aut.debter.adapters.RoomListAdapter;
-import hu.bme.aut.debter.data.UserDataSource;
-import hu.bme.aut.debter.model.Room;
+public class HomeActivity extends AppCompatActivity{
 
-public class HomeActivity extends AppCompatActivity implements RoomListAdapter.RoomClickListener {
-
-    private RecyclerView recyclerView;
-    private RoomListAdapter adapter;
-    private UserDataSource userDataSource;
+    private AppBarConfiguration mAppBarConfiguration;
+    private NavController navController;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home);
 
-        FloatingActionButton fab = findViewById(R.id.fab);
-        fab.setOnClickListener(view -> Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
-                .setAction("Action", null).show());
+        Toolbar toolbar = findViewById(R.id.home_toolbar);
+        setSupportActionBar(toolbar);
 
-        this.userDataSource = UserDataSource.getInstance();
-        initRecyclerView();
-    }
+        configureNavigationBar();
 
-    private void initRecyclerView() {
-        recyclerView = findViewById(R.id.home_rooms);
-        recyclerView.setNestedScrollingEnabled(false);
-        recyclerView.setLayoutFrozen(true);
-        adapter = new RoomListAdapter(userDataSource.getLoggedUser().getRooms(), this);
-        recyclerView.setLayoutManager(new LinearLayoutManager(this));
-        recyclerView.setAdapter(adapter);
     }
 
     @Override
-    public void onRoomClicked(Room room) {
-        Intent intent = new Intent(this, RoomActivity.class);
-        startActivity(intent);
+    public boolean onSupportNavigateUp() {
+        NavController navController = Navigation.findNavController(this, R.id.nav_host_fragment_home);
+        return NavigationUI.navigateUp(navController, mAppBarConfiguration)
+                || super.onSupportNavigateUp();
     }
+
+    private void configureNavigationBar() {
+        DrawerLayout drawer = findViewById(R.id.home_drawer_layout);
+        NavigationView navigationView = findViewById(R.id.home_nav_view);
+
+        mAppBarConfiguration = new AppBarConfiguration.Builder(
+                R.id.nav_my_rooms, R.id.nav_my_debts, R.id.nav_settings)
+                .setDrawerLayout(drawer).build();
+        navController = Navigation.findNavController(this, R.id.nav_host_fragment_home);
+
+        NavigationUI.setupActionBarWithNavController(this, navController, mAppBarConfiguration);
+        NavigationUI.setupWithNavController(navigationView, navController);
+    }
+
 }
