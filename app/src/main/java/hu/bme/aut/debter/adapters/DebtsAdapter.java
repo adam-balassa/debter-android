@@ -3,7 +3,6 @@ package hu.bme.aut.debter.adapters;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Button;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
@@ -30,7 +29,7 @@ public class DebtsAdapter extends RecyclerView.Adapter {
     public RecyclerView.ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         View debtView = LayoutInflater
                 .from(parent.getContext())
-                .inflate(R.layout.debt, parent, false);
+                .inflate(R.layout.component_debt, parent, false);
         return new MyDebtViewHolder(debtView);
     }
 

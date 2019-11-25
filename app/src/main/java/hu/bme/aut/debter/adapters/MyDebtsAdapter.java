@@ -30,7 +30,7 @@ public class MyDebtsAdapter extends RecyclerView.Adapter {
     public RecyclerView.ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         View debtView = LayoutInflater
                 .from(parent.getContext())
-                .inflate(R.layout.my_debt, parent, false);
+                .inflate(R.layout.component_my_debt, parent, false);
         return new MyDebtViewHolder(debtView);
     }
 

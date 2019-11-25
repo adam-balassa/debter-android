@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:showIn="navigation_view">
+
+    <group android:checkableBehavior="single">
+        <item
+            android:id="@+id/nav_my_rooms"
+            android:icon="@drawable/ic_group"
+            android:title="@string/my_rooms" />
+        <item
+            android:id="@+id/nav_my_debts"
+            android:icon="@drawable/ic_debts"
+            android:title="@string/menu_my_debts" />
+        <item
+            android:id="@+id/nav_bank_accounts"
+            android:icon="@drawable/ic_credit_card"
+            android:title="@string/menu_bank_accounts" />
+
+    </group>
+    <item android:title="@string/action">
+        <menu>
+            <item
+                android:id="@+id/nav_back"
+                android:icon="@drawable/ic_exit"
+                android:title="@string/log_out" />
+        </menu>
+    </item>
+</menu>

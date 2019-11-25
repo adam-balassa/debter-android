@@ -29,7 +29,7 @@ public class RoomListAdapter extends RecyclerView.Adapter<RoomListAdapter.RoomVi
     public RoomViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         View roomView = LayoutInflater
                 .from(parent.getContext())
-                .inflate(R.layout.room_fragment, parent, false);
+                .inflate(R.layout.component_my_room, parent, false);
         return new RoomViewHolder(roomView);
     }
 
