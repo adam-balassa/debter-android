@@ -14,11 +14,13 @@
         android:layout_width="match_parent"
         android:layout_height="@dimen/card_height"
         android:clipToPadding="false"
-        app:cardCornerRadius="3dp">
+        android:foreground="?android:attr/selectableItemBackground"
+        app:cardCornerRadius="3dp"
+        app:cardBackgroundColor="@android:color/white">
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="match_parent"
             android:orientation="horizontal">
 
             <ImageView
@@ -26,14 +28,13 @@
                 android:layout_width="@dimen/card_height"
                 android:layout_height="match_parent"
                 android:gravity="center"
-                android:padding="0dp"
+                android:padding="20dp"
                 android:scaleType="centerCrop"
-                android:src="@drawable/summer" />
+                android:src="@drawable/ic_room" />
 
             <RelativeLayout
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:foreground="?android:attr/selectableItemBackground">
+                android:layout_height="match_parent">
 
                 <LinearLayout
                     android:layout_width="wrap_content"
