@@ -10,6 +10,7 @@ import java.util.List;
 import java.util.Locale;
 
 import hu.bme.aut.debter.model.Debt;
+import hu.bme.aut.debter.model.MyDebt;
 import hu.bme.aut.debter.model.Payment;
 
 public class Formatter {
@@ -21,6 +22,12 @@ public class Formatter {
     }
 
     public static String formatDebtValue(Debt debt) {
+        double value = debt.getValue();
+        String currency = debt.getCurrency();
+        return addCurrency(getFormattedValue(value), currency);
+    }
+
+    public static String formatMyDebtValue(MyDebt debt) {
         double value = debt.getValue();
         String currency = debt.getCurrency();
         return addCurrency(getFormattedValue(value), currency);
@@ -62,7 +69,7 @@ public class Formatter {
         for (int i = 0; i < arr.size(); ++i) {
             sb.append(arr.get(i));
             if (i != arr.size() - 1)
-                sb.append(' ');
+                sb.append('\u00A0');
         }
         return sb.toString();
     }
@@ -70,11 +77,11 @@ public class Formatter {
     private static String addCurrency(String number, String currency) {
         switch (currency) {
             case "HUF":
-                return number + " Ft";
+                return number + "\u00A0Ft";
             case "EUR":
-                return "€ " + number;
+                return "€\u00A0" + number;
             case "USD":
-                return "$ " + number;
+                return "$\u00A0" + number;
             default:
                 return number + ' ' + currency;
         }

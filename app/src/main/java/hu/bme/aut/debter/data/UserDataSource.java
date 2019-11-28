@@ -1,17 +1,18 @@
 package hu.bme.aut.debter.data;
 
-import java.util.Arrays;
 import java.util.List;
 
 import hu.bme.aut.debter.model.Debt;
+import hu.bme.aut.debter.model.MyDebt;
 import hu.bme.aut.debter.model.User;
 
 public class UserDataSource {
-    private final User loggedUser;
+    private User loggedUser;
     private static UserDataSource instance;
+    private List<MyDebt> debts;
 
     private UserDataSource() {
-        loggedUser = UsersDataSource.getInstance().getUser("balassaadi@gmail.com");
+
     }
 
     public static UserDataSource getInstance() {
@@ -24,7 +25,15 @@ public class UserDataSource {
         return loggedUser;
     }
 
-    public List<Debt> getDebts() {
-        return RoomDataSource.getInstance().getRoom().getValue().getMembers().get(1).getDebts();
+    public void setLoggedUser(User loggedUser) {
+        this.loggedUser = loggedUser;
+    }
+
+    public List<MyDebt> getDebts() {
+        return debts;
+    }
+
+    public void setDebts(List<MyDebt> debts) {
+        this.debts = debts;
     }
 }

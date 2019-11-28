@@ -6,15 +6,10 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.Spinner;
-import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
-import androidx.lifecycle.ViewModelProviders;
-import androidx.navigation.NavOptions;
 import androidx.navigation.Navigation;
-
-import java.util.Arrays;
 
 import hu.bme.aut.debter.R;
 import hu.bme.aut.debter.data.RoomDataSource;
