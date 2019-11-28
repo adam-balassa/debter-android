@@ -46,7 +46,7 @@
     <string name="create_new_room">Create new room</string>
     <string name="log_out">Log out</string>
     <string name="action">Action</string>
-    <string name="debt_to">to</string>
+    <string name="debt_to">to&#160;</string>
     <string name="mark_as_arranged">MARK AS ARRANGED</string>
     <string name="debt_arrange">Arrange</string>
     <string name="my_debts">MY DEBTS</string>
@@ -71,6 +71,8 @@
     <string name="add">Add</string>
     <string name="create">Create</string>
     <string name="save_changes">Save changes</string>
+    <string name="password_again">Password again</string>
+    <string name="registration">Registration</string>
 
     <string-array name="rounding">
         <item>0.01</item>

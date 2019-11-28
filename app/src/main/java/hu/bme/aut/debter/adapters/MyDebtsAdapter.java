@@ -14,13 +14,14 @@ import java.util.List;
 import hu.bme.aut.debter.R;
 import hu.bme.aut.debter.helper.Formatter;
 import hu.bme.aut.debter.model.Debt;
+import hu.bme.aut.debter.model.MyDebt;
 
 public class MyDebtsAdapter extends RecyclerView.Adapter {
 
     MyDebtOnClickListener listener;
-    List<Debt> debts;
+    List<MyDebt> debts;
 
-    public MyDebtsAdapter(MyDebtOnClickListener listener, List<Debt> myDebts) {
+    public MyDebtsAdapter(MyDebtOnClickListener listener, List<MyDebt> myDebts) {
         this.listener = listener;
         this.debts = myDebts;
     }
@@ -36,16 +37,16 @@ public class MyDebtsAdapter extends RecyclerView.Adapter {
 
     @Override
     public void onBindViewHolder(@NonNull RecyclerView.ViewHolder holder, int position) {
-        Debt debt = debts.get(position);
+        MyDebt debt = debts.get(position);
         MyDebtViewHolder viewHolder = (MyDebtViewHolder)holder;
         viewHolder.debt = debt;
 
-        viewHolder.from.setText(debt.getFrom().getUser().getName());
         viewHolder.to.setText(debt.getTo().getUser().getName());
-        viewHolder.value.setText(Formatter.formatDebtValue(debt));
+        viewHolder.value.setText(Formatter.formatMyDebtValue(debt));
+        viewHolder.room.setText(debt.getRoomName());
     }
 
-    public void setNewDebts(List<Debt> debts) {
+    public void setNewDebts(List<MyDebt> debts) {
         this.debts.clear();
         this.debts.addAll(debts);
     }
@@ -56,25 +57,25 @@ public class MyDebtsAdapter extends RecyclerView.Adapter {
     }
 
     public interface MyDebtOnClickListener{
-        void onArrange(Debt debt);
-        void onMarkAsArranged(Debt debt);
+        void onArrange(MyDebt debt);
+        void onMarkAsArranged(MyDebt debt);
     }
 
     class MyDebtViewHolder extends RecyclerView.ViewHolder {
-        TextView from;
         TextView to;
         TextView value;
+        TextView room;
         Button arrange;
         TextView markAsArranged;
 
-        Debt debt;
+        MyDebt debt;
 
         MyDebtViewHolder(@NonNull View roomView) {
             super(roomView);
 
-            from = roomView.findViewById(R.id.my_debt_from);
             to = roomView.findViewById(R.id.my_debt_to);
             value = roomView.findViewById(R.id.my_debt_value);
+            room = roomView.findViewById(R.id.debt_room);
             arrange = roomView.findViewById(R.id.my_debt_arrange);
             markAsArranged = roomView.findViewById(R.id.my_debt_mark_as_arranged);
 

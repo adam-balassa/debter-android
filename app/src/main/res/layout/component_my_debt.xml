@@ -37,15 +37,25 @@
                 android:layout_weight="4"
                 android:gravity="start"
                 android:orientation="vertical">
-                <TextView
-                    android:id="@+id/my_debt_from"
+                <LinearLayout
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:textSize="18sp"
-                    android:textColor="#000000"
-                    android:ellipsize="end"
-                    android:maxLines="1"
-                    />
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textSize="18sp"
+                        android:text="@string/debt_to"/>
+                    <TextView
+                        android:id="@+id/my_debt_to"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textSize="18sp"
+                        android:ellipsize="end"
+                        android:textColor="#000000"
+                        android:maxLines="1"/>
+                </LinearLayout>
                 <LinearLayout
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -55,9 +65,9 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:textSize="15sp"
-                        android:text="@string/debt_to"/>
+                        android:text="in "/>
                     <TextView
-                        android:id="@+id/my_debt_to"
+                        android:id="@+id/debt_room"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:textSize="15sp"
