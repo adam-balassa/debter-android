@@ -24,14 +24,14 @@ public class UsersDataSource {
 
     private UsersDataSource() {
         User[] u = {
-                new User("Ádám Balassa", "balassaadi@gmail.com", "password"),
-                new User("Béla Kovács", "bela.kovacs@gmail.com", "password"),
-                new User("Péter Kiss", "kiss.peter@gmail.com", "password"),
-                new User("Teodóra Faragó", "farago.teodora@gmail.com", "password"),
-                new User("Kalapos József", "jozsef.kalapos@gmail.com", "password"),
-                new User("Kozma Kata", "kata.kozma@gmail.com", "password"),
-                new User("Bárányos Ferenc", "bferi@gmail.com", "password"),
-                new User("Kolozsvári Gergő", "kolger98@gmail.com", "password")
+                new User("Ádám Balassa", "balassaadi@gmail.com", null),
+                new User("Béla Kovács", "bela.kovacs@gmail.com", null),
+                new User("Péter Kiss", "kiss.peter@gmail.com", null),
+                new User("Teodóra Faragó", "farago.teodora@gmail.com", null),
+                new User("Kalapos József", "jozsef.kalapos@gmail.com", null),
+                new User("Kozma Kata", "kata.kozma@gmail.com", null),
+                new User("Bárányos Ferenc", "bferi@gmail.com", null),
+                new User("Kolozsvári Gergő", "kolger98@gmail.com", null)
         };
         users = new MutableLiveData<>();
         List<User> userList = new ArrayList<>(8);

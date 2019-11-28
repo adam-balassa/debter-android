@@ -26,9 +26,9 @@ public class RoomDataSource {
     private RoomDataSource () {
         User[] u = {
                 UserDataSource.getInstance().getLoggedUser(),
-                new User("Béla Kovács", "bela.kovacs@gmail.com", "password"),
-                new User("Péter Kiss", "kiss.peter@gmail.com", "password"),
-                new User("Teodóra Faragó", "farago.teodora@gmail.com", "password")
+                new User("Béla Kovács", "bela.kovacs@gmail.com", null),
+                new User("Péter Kiss", "kiss.peter@gmail.com", null),
+                new User("Teodóra Faragó", "farago.teodora@gmail.com", null)
         };
         List<User> users = new ArrayList<>(4);
         List<Member> members = new ArrayList<>(4);

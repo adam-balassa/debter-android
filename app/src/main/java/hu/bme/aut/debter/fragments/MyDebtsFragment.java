@@ -26,6 +26,7 @@ import hu.bme.aut.debter.data.UserDataSource;
 import hu.bme.aut.debter.helper.Formatter;
 import hu.bme.aut.debter.model.Debt;
 import hu.bme.aut.debter.model.Member;
+import hu.bme.aut.debter.model.MyDebt;
 import hu.bme.aut.debter.model.User;
 
 public class MyDebtsFragment extends Fragment implements MyDebtsAdapter.MyDebtOnClickListener {
@@ -44,7 +45,7 @@ public class MyDebtsFragment extends Fragment implements MyDebtsAdapter.MyDebtOn
         final RecyclerView recyclerView;
         final MyDebtsAdapter adapter;
 
-        List<Debt> myDebts = dataSource.getDebts();
+        List<MyDebt> myDebts = dataSource.getDebts();
 
         if (myDebts.size() == 0) {
             addText("You don't have any debts", root.findViewById(R.id.my_debts_container));
@@ -54,9 +55,7 @@ public class MyDebtsFragment extends Fragment implements MyDebtsAdapter.MyDebtOn
             recyclerView.setNestedScrollingEnabled(false);
             recyclerView.setLayoutFrozen(true);
 
-
             adapter = new MyDebtsAdapter(this, myDebts);
-            RoomDataSource.getInstance().getRoom().observe(this, room -> adapter.setNewDebts(getMyDebts(room.getMembers())));
 
             recyclerView.setNestedScrollingEnabled(false);
             recyclerView.setLayoutFrozen(true);
@@ -84,18 +83,21 @@ public class MyDebtsFragment extends Fragment implements MyDebtsAdapter.MyDebtOn
         return debts;
     }
 
-    public void onMarkAsArranged(Debt debt) {
-        Toast.makeText(getContext(), "Debt marked as arranged ( "+  debt.getFrom().getUser().getName() +" )", Toast.LENGTH_LONG).show();
+
+    @Override
+    public void onArrange(MyDebt debt) {
+            new AlertDialog.Builder(getContext())
+                    .setTitle("Transferring debt arrangement")
+                    .setMessage(
+                            "Are you sure want to transfer " + Formatter.formatMyDebtValue(debt) +
+                                    " to " + debt.getTo().getUser().getName() + "?")
+                    .setPositiveButton(android.R.string.yes, (dialog, whichButton) ->
+                            Toast.makeText(getContext(), "Money transferred", Toast.LENGTH_SHORT).show())
+                    .setNegativeButton(android.R.string.no, null).show();
     }
 
-
-    public void onArrange(Debt debt) {
-        new AlertDialog.Builder(getContext())
-                .setTitle("Transferring debt arrangement")
-                .setMessage(
-                        "Are you sure want to transfer " + Formatter.formatDebtValue(debt) +
-                                " to " + debt.getTo().getUser().getName() + "?")
-                .setPositiveButton(android.R.string.yes, (dialog, whichButton) ->
-                        Toast.makeText(getContext(), "Money transferred", Toast.LENGTH_SHORT).show())
-                .setNegativeButton(android.R.string.no, null).show();    }
+    @Override
+    public void onMarkAsArranged(MyDebt debt) {
+        Toast.makeText(getContext(), "Debt marked as arranged ( "+  debt.getTo().getUser().getName() +" )", Toast.LENGTH_LONG).show();
+    }
 }

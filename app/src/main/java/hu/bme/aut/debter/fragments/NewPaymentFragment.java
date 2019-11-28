@@ -10,7 +10,6 @@ import android.widget.Spinner;
 
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
-import androidx.navigation.NavOptions;
 import androidx.navigation.Navigation;
 
 import com.google.android.flexbox.FlexboxLayout;
