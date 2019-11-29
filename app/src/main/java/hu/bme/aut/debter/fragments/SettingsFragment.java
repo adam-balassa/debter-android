@@ -55,7 +55,7 @@ public class SettingsFragment extends Fragment {
         Spinner roundingSelect = root.findViewById(R.id.room_rounding);
         double[] rounding = { 0.01, 0.1, 1, 5, 10, 5, 100, 500 };
         for (int i = 0; i < rounding.length; ++i)
-            if (rounding[i] == this.rounding) {
+            if (rounding[i] == (int)this.rounding) {
                 roundingSelect.setSelection(i);
                 break;
             }

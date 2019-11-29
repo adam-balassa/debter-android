@@ -2,9 +2,11 @@ package hu.bme.aut.debter.fragments;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.LinearLayout;
 
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
@@ -19,7 +21,11 @@ import com.google.android.material.snackbar.Snackbar;
 import hu.bme.aut.debter.R;
 import hu.bme.aut.debter.RoomActivity;
 import hu.bme.aut.debter.adapters.RoomListAdapter;
+import hu.bme.aut.debter.data.APIRoutes;
+import hu.bme.aut.debter.data.DebterAPI;
+import hu.bme.aut.debter.data.RoomDataSource;
 import hu.bme.aut.debter.data.UserDataSource;
+import hu.bme.aut.debter.model.DebterRoom;
 import hu.bme.aut.debter.model.Room;
 
 public class MyRoomsFragment extends Fragment implements RoomListAdapter.RoomClickListener  {
@@ -58,7 +64,28 @@ public class MyRoomsFragment extends Fragment implements RoomListAdapter.RoomCli
 
     @Override
     public void onRoomClicked(Room room) {
-        Intent intent = new Intent(getActivity(), RoomActivity.class);
-        startActivity(intent);
+
+        LinearLayout progress = getActivity().findViewById(R.id.progressbar_home);
+        progress.setVisibility(View.VISIBLE);
+
+        APIRoutes api = DebterAPI.getInstance().getDebter();
+        api.getRoomData(new APIRoutes.RoomKey(room.getRoomKey())).enqueue(
+                new DebterAPI.DebterCallback<>((call, response) -> {
+                    DebterRoom details = response.body().data.getRoom();
+                    api.getFullRoomData(room.getRoomKey()).enqueue(
+                            new DebterAPI.DebterCallback<>((call1, response1) -> {
+                                DebterRoom debterRoom = response1.body().data.getRoom(details);
+                                RoomDataSource.getInstance().getRoom().postValue(debterRoom);
+
+                                getActivity().runOnUiThread(() -> progress.setVisibility(View.GONE));
+
+                                DebterRoom r = RoomDataSource.getInstance().getRoom().getValue();
+
+                                Intent intent = new Intent(getActivity(), RoomActivity.class);
+                                startActivity(intent);
+                            })
+                    );
+                    }, (call, throwable) -> getActivity().runOnUiThread(() -> progress.setVisibility(View.GONE))));
+
     }
 }
