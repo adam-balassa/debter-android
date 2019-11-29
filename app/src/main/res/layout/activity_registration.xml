@@ -3,11 +3,11 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:padding="16dp"
     android:background="@drawable/light_gradient_blue_bg"
     tools:context="hu.bme.aut.debter.RegistrationActivity">
     <LinearLayout
         android:layout_marginTop="30dp"
+        android:padding="16dp"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical">
@@ -24,22 +24,24 @@
             android:text="Full name" />
 
         <EditText
-            android:id="@+id/etName"
+            android:id="@+id/registration_name"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:inputType="textEmailAddress"
-            android:autofillHints="name" />
+            android:autofillHints="name"
+            android:hint = "John Smith" />
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/email" />
 
         <EditText
-            android:id="@+id/etEmailAddress"
+            android:id="@+id/registration_email"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:inputType="textEmailAddress"
-            android:autofillHints="email" />
+            android:autofillHints="email"
+            android:hint = "john.smith@mail.com" />
 
         <TextView
             android:layout_width="wrap_content"
@@ -48,11 +50,12 @@
             android:text="@string/password" />
 
         <EditText
-            android:id="@+id/etPassword"
+            android:id="@+id/registration_password"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:inputType="textPassword"
-            android:autofillHints="password"/>
+            android:autofillHints="password"
+            android:hint = "Password"/>
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -60,14 +63,15 @@
             android:text="@string/password_again" />
 
         <EditText
-            android:id="@+id/etPassword2"
+            android:id="@+id/registration_password2"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:inputType="textPassword"
-            android:autofillHints="password"/>
+            android:autofillHints="password"
+            android:hint = "Password again"/>
 
         <Button
-            android:id="@+id/btnLogin"
+            android:id="@+id/registration_button"
             android:layout_width="150sp"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
@@ -75,5 +79,28 @@
             style="@android:style/Widget.Material.Button.Colored"
             android:text="@string/register" />
 
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/progressbar_view"
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:background="#aa000000"
+        android:gravity="center"
+        android:orientation="vertical"
+        android:visibility="invisible">
+
+        <LinearLayout
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center_horizontal"
+            android:orientation="horizontal" >
+
+            <ProgressBar
+                style="?android:attr/progressBarStyle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical|center_horizontal" />
+        </LinearLayout>
     </LinearLayout>
 </RelativeLayout>

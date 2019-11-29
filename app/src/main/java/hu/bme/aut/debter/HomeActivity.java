@@ -18,17 +18,13 @@ import androidx.navigation.Navigation;
 import androidx.navigation.ui.AppBarConfiguration;
 import androidx.navigation.ui.NavigationUI;
 
-import java.util.Collections;
 import java.util.LinkedList;
 import java.util.List;
 
 import hu.bme.aut.debter.data.APIRoutes;
 import hu.bme.aut.debter.data.DebterAPI;
 import hu.bme.aut.debter.data.UserDataSource;
-import hu.bme.aut.debter.model.Debt;
 import hu.bme.aut.debter.model.MyDebt;
-import hu.bme.aut.debter.model.Room;
-import hu.bme.aut.debter.model.User;
 
 public class HomeActivity extends AppCompatActivity{
 

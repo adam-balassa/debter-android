@@ -107,7 +107,7 @@ public class DebtsFragment extends Fragment implements MyDebtsAdapter.MyDebtOnCl
         List<MyDebt> debts = new LinkedList<>();
         User me = UserDataSource.getInstance().getLoggedUser();
         for (Member member : members)
-            if (member.getUser() == me){
+            if (member.getUser().getName().equals(me.getName())){
                 for (Debt d : member.getDebts())
                     debts.add(new MyDebt(d.getTo(), d.getCurrency(), d.getValue(), dataSource.getRoom().getValue().getTitle()));
                 break;

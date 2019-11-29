@@ -21,6 +21,10 @@ public class Formatter {
         return addCurrency(getFormattedValue(value), currency);
     }
 
+    public static String formatValue(double value, String currency) {
+        return addCurrency(getFormattedValue(value), currency);
+    }
+
     public static String formatDebtValue(Debt debt) {
         double value = debt.getValue();
         String currency = debt.getCurrency();
