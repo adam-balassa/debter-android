@@ -68,24 +68,11 @@ public class MyRoomsFragment extends Fragment implements RoomListAdapter.RoomCli
         LinearLayout progress = getActivity().findViewById(R.id.progressbar_home);
         progress.setVisibility(View.VISIBLE);
 
-        APIRoutes api = DebterAPI.getInstance().getDebter();
-        api.getRoomData(new APIRoutes.RoomKey(room.getRoomKey())).enqueue(
+        RoomDataSource.getInstance().loadRoom( room.getRoomKey(),
                 new DebterAPI.DebterCallback<>((call, response) -> {
-                    DebterRoom details = response.body().data.getRoom();
-                    api.getFullRoomData(room.getRoomKey()).enqueue(
-                            new DebterAPI.DebterCallback<>((call1, response1) -> {
-                                DebterRoom debterRoom = response1.body().data.getRoom(details);
-                                RoomDataSource.getInstance().getRoom().postValue(debterRoom);
-
-                                getActivity().runOnUiThread(() -> progress.setVisibility(View.GONE));
-
-                                DebterRoom r = RoomDataSource.getInstance().getRoom().getValue();
-
-                                Intent intent = new Intent(getActivity(), RoomActivity.class);
-                                startActivity(intent);
-                            })
-                    );
-                    }, (call, throwable) -> getActivity().runOnUiThread(() -> progress.setVisibility(View.GONE))));
-
+                    getActivity().runOnUiThread(() -> progress.setVisibility(View.GONE));
+                    Intent intent = new Intent(getActivity(), RoomActivity.class);
+                    startActivity(intent);
+                }, (__, ___) ->  getActivity().runOnUiThread(() -> progress.setVisibility(View.GONE))));
     }
 }

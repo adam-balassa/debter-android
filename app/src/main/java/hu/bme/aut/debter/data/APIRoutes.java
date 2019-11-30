@@ -1,19 +1,16 @@
 package hu.bme.aut.debter.data;
 
 import android.annotation.SuppressLint;
-import android.util.Log;
 
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
-import java.lang.reflect.Array;
 import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.HashMap;
-import java.util.LinkedHashMap;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.ListIterator;
@@ -28,7 +25,9 @@ import hu.bme.aut.debter.model.Room;
 import hu.bme.aut.debter.model.User;
 import retrofit2.Call;
 import retrofit2.http.Body;
+import retrofit2.http.FormUrlEncoded;
 import retrofit2.http.GET;
+import retrofit2.http.Headers;
 import retrofit2.http.PATCH;
 import retrofit2.http.POST;
 import retrofit2.http.Path;
@@ -51,6 +50,18 @@ public interface APIRoutes {
 
     @PATCH("room/login")
     Call<Response<RoomData>> getRoomData(@Body RoomKey roomKey);
+
+    @PATCH("settings/rounding")
+    Call<Response<Object>> setNewRounding(@Body Rounding rounding);
+
+    @PATCH("settings/currency")
+    Call<Response<Object>> setNewCurrency(@Body Currency currency);
+
+    @Headers({
+        "Content-Type: application/json"
+    })
+    @POST("payment")
+    Call<Response<Object>> addNewPayment(@Body PaymentData paymentData);
 
     class Response <T> {
         @SerializedName("statusCode") @Expose public Integer statusCode;
@@ -226,6 +237,25 @@ public interface APIRoutes {
         }
     }
 
+    class Rounding extends RoomKey {
+        Double rounding;
+
+        public Rounding(String roomKey, Double rounding) {
+            super(roomKey);
+            this.rounding = rounding;
+        }
+    }
+
+    class Currency extends RoomKey {
+        String mainCurrency;
+
+        public Currency(String roomKey, String currency) {
+            super(roomKey);
+            this.mainCurrency = currency;
+        }
+    }
+
+
     class RoomData {
         @SerializedName("key") @Expose String key;
         @SerializedName("defaultCurrency") @Expose String defaultCurrency;
@@ -234,6 +264,24 @@ public interface APIRoutes {
 
         public DebterRoom getRoom() {
             return new DebterRoom(key, name, null, null, rounding, defaultCurrency);
+        }
+    }
+
+    class PaymentData {
+        @SerializedName("roomKey") @Expose String roomKey;
+        @SerializedName("value") @Expose double value;
+        @SerializedName("memberId") @Expose String memberId;
+        @SerializedName("note") @Expose String note;
+        @SerializedName("currency") @Expose String currency;
+        @SerializedName("included") @Expose ArrayList<String> included;
+
+        public PaymentData(String roomKey, double value, String memberId, String note, String currency, ArrayList<String> included) {
+            this.roomKey = roomKey;
+            this.value = value;
+            this.note= note;
+            this.currency = currency;
+            this.included = included;
+            this.memberId = memberId;
         }
     }
 }

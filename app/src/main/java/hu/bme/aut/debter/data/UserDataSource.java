@@ -1,8 +1,6 @@
 package hu.bme.aut.debter.data;
 
 import java.util.List;
-
-import hu.bme.aut.debter.model.Debt;
 import hu.bme.aut.debter.model.MyDebt;
 import hu.bme.aut.debter.model.User;
 
