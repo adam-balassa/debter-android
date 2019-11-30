@@ -6,8 +6,8 @@ public class DebterRoom extends Room {
 
     private final List<Member> members;
     private final List<Payment> payments;
-    private final double rounding;
-    private final String currency;
+    private double rounding;
+    private String currency;
 
     public DebterRoom(String r, String t, List<Member> m, List<Payment> payments, double ro, String c) {
         super(r, t);
@@ -35,5 +35,12 @@ public class DebterRoom extends Room {
 
     public double getRounding() {
         return rounding;
+    }
+
+    public Member findMemberByName(String name) {
+        for (Member member : members)
+            if (member.getUser().getName().equals(name))
+                return member;
+        return null;
     }
 }

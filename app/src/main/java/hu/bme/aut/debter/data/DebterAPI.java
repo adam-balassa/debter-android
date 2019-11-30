@@ -2,6 +2,8 @@ package hu.bme.aut.debter.data;
 
 import android.util.Log;
 
+import java.io.IOException;
+
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
@@ -49,8 +51,10 @@ public class DebterAPI {
         public void onResponse(Call<T> call, Response<T> response) {
             if (response.code() == 200)
                 callback.onResponse(call, response);
-            else
+            else {
                 handleError(null, null);
+                Log.d("develop", call.request().toString());
+            }
         }
 
         @Override

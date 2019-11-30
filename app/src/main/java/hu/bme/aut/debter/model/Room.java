@@ -1,7 +1,5 @@
 package hu.bme.aut.debter.model;
 
-import java.util.List;
-
 public class Room {
     private final String id;
     private final String roomKey;
