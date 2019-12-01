@@ -14,7 +14,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import hu.bme.aut.debter.R;
 import hu.bme.aut.debter.adapters.PaymentListAdapter;
-import hu.bme.aut.debter.data.RoomDataSource;
+import hu.bme.aut.debter.data.services.RoomDataSource;
 
 public class HistoryFragment extends Fragment {
 

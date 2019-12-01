@@ -8,17 +8,10 @@ public class User {
     private final String name;
     private final String email;
 
-    private List<Room> rooms;
-
-    public User(String n, String e, List<Room> rooms) {
+    public User(String n, String e) {
         name = n;
         email = e;
-        this.rooms = rooms;
 
-    }
-
-    public List<Room> getRooms() {
-        return rooms;
     }
 
     public String getEmail() {
@@ -27,10 +20,6 @@ public class User {
 
     public String getName() {
         return name;
-    }
-
-    public void setRooms(List<Room> rooms) {
-        this.rooms = rooms;
     }
 }
 

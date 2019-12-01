@@ -1,9 +1,6 @@
 package hu.bme.aut.debter.fragments;
 
-import android.content.Intent;
-import android.media.SoundPool;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -16,10 +13,9 @@ import androidx.fragment.app.Fragment;
 import androidx.navigation.Navigation;
 
 import hu.bme.aut.debter.R;
-import hu.bme.aut.debter.RoomActivity;
-import hu.bme.aut.debter.data.APIRoutes;
-import hu.bme.aut.debter.data.DebterAPI;
-import hu.bme.aut.debter.data.RoomDataSource;
+import hu.bme.aut.debter.data.api.APIRoutes;
+import hu.bme.aut.debter.data.api.DebterAPI;
+import hu.bme.aut.debter.data.services.RoomDataSource;
 import hu.bme.aut.debter.model.DebterRoom;
 
 public class SettingsFragment extends Fragment {

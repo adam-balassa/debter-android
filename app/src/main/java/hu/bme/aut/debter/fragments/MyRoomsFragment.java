@@ -2,7 +2,6 @@ package hu.bme.aut.debter.fragments;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -16,16 +15,13 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
-import com.google.android.material.snackbar.Snackbar;
 
 import hu.bme.aut.debter.R;
 import hu.bme.aut.debter.RoomActivity;
 import hu.bme.aut.debter.adapters.RoomListAdapter;
-import hu.bme.aut.debter.data.APIRoutes;
-import hu.bme.aut.debter.data.DebterAPI;
-import hu.bme.aut.debter.data.RoomDataSource;
-import hu.bme.aut.debter.data.UserDataSource;
-import hu.bme.aut.debter.model.DebterRoom;
+import hu.bme.aut.debter.data.api.DebterAPI;
+import hu.bme.aut.debter.data.services.RoomDataSource;
+import hu.bme.aut.debter.data.services.UserDataSource;
 import hu.bme.aut.debter.model.Room;
 
 public class MyRoomsFragment extends Fragment implements RoomListAdapter.RoomClickListener  {
@@ -57,7 +53,7 @@ public class MyRoomsFragment extends Fragment implements RoomListAdapter.RoomCli
         recyclerView = root.findViewById(R.id.home_rooms);
         recyclerView.setNestedScrollingEnabled(false);
         recyclerView.setLayoutFrozen(true);
-        adapter = new RoomListAdapter(userDataSource.getLoggedUser().getRooms(), this);
+        adapter = new RoomListAdapter(userDataSource.getRooms(), this);
         recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
         recyclerView.setAdapter(adapter);
     }

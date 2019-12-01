@@ -2,9 +2,10 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     package="hu.bme.aut.debter">
-    <uses-permission android:name=
-        "android.permission.INTERNET"/>
+
+    <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+
     <application
         android:allowBackup="true"
         android:icon="@drawable/favicon"
@@ -13,21 +14,26 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         tools:ignore="GoogleAppIndexingWarning">
-        <activity android:name=".RegistrationActivity"></activity>
+        <activity android:name=".MainActivity"
+            android:theme="@style/AppTheme.NoActionBar.FullScreen">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity android:name=".RegistrationActivity" />
         <activity
             android:name=".RoomActivity"
-            android:label="@string/title_activity_navigation"
+            android:label="@string/room_activity"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
             android:name=".HomeActivity"
-            android:label="@string/title_activity_navigation"
+            android:label="@string/home_activity"
             android:theme="@style/AppTheme.NoActionBar" />
-        <activity android:name=".LoginActivity">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
+        <activity
+            android:theme="@style/AppTheme.NoActionBar"
+            android:label="@string/login_activity"
+            android:name=".LoginActivity">
         </activity>
     </application>
 

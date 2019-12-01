@@ -3,7 +3,7 @@ package hu.bme.aut.debter.fragments.history;
 import androidx.lifecycle.MutableLiveData;
 import androidx.lifecycle.ViewModel;
 
-import hu.bme.aut.debter.data.RoomDataSource;
+import hu.bme.aut.debter.data.services.RoomDataSource;
 import hu.bme.aut.debter.model.Payment;
 import hu.bme.aut.debter.model.Room;
 

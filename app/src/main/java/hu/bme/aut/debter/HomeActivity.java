@@ -1,18 +1,22 @@
 package hu.bme.aut.debter;
 
+import android.content.Context;
 import android.content.Intent;
+import android.graphics.Rect;
 import android.os.Bundle;
-import android.util.Log;
+import android.view.MotionEvent;
 import android.view.View;
+import android.view.inputmethod.InputMethodManager;
+import android.widget.EditText;
 import android.widget.TextView;
 
-import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.android.material.navigation.NavigationView;
-import com.google.android.material.snackbar.Snackbar;
 
+import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 import androidx.drawerlayout.widget.DrawerLayout;
+import androidx.fragment.app.Fragment;
 import androidx.navigation.NavController;
 import androidx.navigation.Navigation;
 import androidx.navigation.ui.AppBarConfiguration;
@@ -21,9 +25,10 @@ import androidx.navigation.ui.NavigationUI;
 import java.util.LinkedList;
 import java.util.List;
 
-import hu.bme.aut.debter.data.APIRoutes;
-import hu.bme.aut.debter.data.DebterAPI;
-import hu.bme.aut.debter.data.UserDataSource;
+import hu.bme.aut.debter.data.api.APIRoutes;
+import hu.bme.aut.debter.data.api.DebterAPI;
+import hu.bme.aut.debter.data.services.DatabaseService;
+import hu.bme.aut.debter.data.services.UserDataSource;
 import hu.bme.aut.debter.model.MyDebt;
 
 public class HomeActivity extends AppCompatActivity{
@@ -38,9 +43,13 @@ public class HomeActivity extends AppCompatActivity{
 
         Toolbar toolbar = findViewById(R.id.home_toolbar);
         setSupportActionBar(toolbar);
-
-        loadUserDebts();
         configureNavigationBar();
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        loadUserDebts();
     }
 
     private void loadUserDebts() {
@@ -88,4 +97,40 @@ public class HomeActivity extends AppCompatActivity{
         NavigationUI.setupWithNavController(navigationView, navController);
     }
 
+    public static class Logout extends Fragment {
+        @Override
+        public void onCreate(@Nullable Bundle savedInstanceState) {
+            super.onCreate(savedInstanceState);
+
+            DatabaseService db = new DatabaseService(getContext());
+            db.open();
+            db.logout();
+            db.close();
+
+            Intent intent = new Intent(getActivity(), LoginActivity.class);
+            intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_NEW_TASK);
+            startActivity(intent);
+            getActivity().finish();
+        }
+    }
+
+    @Override
+    public boolean dispatchTouchEvent(MotionEvent event) {
+        if (event.getAction() == MotionEvent.ACTION_DOWN) {
+
+            View v = getCurrentFocus();
+            if ( v instanceof EditText) {
+
+
+                Rect outRect = new Rect();
+                v.getGlobalVisibleRect(outRect);
+                if (!outRect.contains((int)event.getRawX(), (int)event.getRawY())) {
+                    v.clearFocus();
+                    InputMethodManager imm = (InputMethodManager) getSystemService(Context.INPUT_METHOD_SERVICE);
+                    imm.hideSoftInputFromWindow(v.getWindowToken(), 0);
+                }
+            }
+        }
+        return super.dispatchTouchEvent( event );
+    }
 }
