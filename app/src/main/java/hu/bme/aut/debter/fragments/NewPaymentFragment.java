@@ -17,7 +17,6 @@ import androidx.navigation.Navigation;
 import com.google.android.flexbox.FlexboxLayout;
 import com.google.android.material.chip.Chip;
 
-import java.lang.reflect.Array;
 import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.LinkedList;
@@ -25,16 +24,16 @@ import java.util.List;
 import java.util.Set;
 
 import hu.bme.aut.debter.R;
-import hu.bme.aut.debter.data.APIRoutes;
-import hu.bme.aut.debter.data.DebterAPI;
-import hu.bme.aut.debter.data.RoomDataSource;
+import hu.bme.aut.debter.data.api.APIRoutes;
+import hu.bme.aut.debter.data.api.DebterAPI;
+import hu.bme.aut.debter.data.services.RoomDataSource;
 import hu.bme.aut.debter.model.DebterRoom;
 import hu.bme.aut.debter.model.Member;
 
 public class NewPaymentFragment extends Fragment {
 
-    Set<Member> selectedMembers;
-    View root;
+    private Set<Member> selectedMembers;
+    private View root;
 
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {

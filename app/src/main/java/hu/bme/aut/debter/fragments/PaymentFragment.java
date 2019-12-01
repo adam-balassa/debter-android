@@ -16,7 +16,7 @@ import com.google.android.material.chip.Chip;
 import java.util.List;
 
 import hu.bme.aut.debter.R;
-import hu.bme.aut.debter.data.RoomDataSource;
+import hu.bme.aut.debter.data.services.RoomDataSource;
 import hu.bme.aut.debter.helper.Formatter;
 import hu.bme.aut.debter.model.Member;
 import hu.bme.aut.debter.model.Payment;

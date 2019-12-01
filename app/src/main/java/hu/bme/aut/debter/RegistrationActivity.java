@@ -2,16 +2,19 @@ package hu.bme.aut.debter;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Context;
 import android.content.Intent;
+import android.graphics.Rect;
 import android.os.Bundle;
+import android.view.MotionEvent;
 import android.view.View;
-import android.widget.Button;
+import android.view.inputmethod.InputMethodManager;
 import android.widget.EditText;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
-import hu.bme.aut.debter.data.APIRoutes;
-import hu.bme.aut.debter.data.DebterAPI;
+import hu.bme.aut.debter.data.api.APIRoutes;
+import hu.bme.aut.debter.data.api.DebterAPI;
 
 public class RegistrationActivity extends AppCompatActivity {
 
@@ -52,5 +55,25 @@ public class RegistrationActivity extends AppCompatActivity {
                     startActivity(intent);
                 }, (call, error) -> runOnUiThread(() -> progress.setVisibility(View.GONE))));
         });
+    }
+
+    @Override
+    public boolean dispatchTouchEvent(MotionEvent event) {
+        if (event.getAction() == MotionEvent.ACTION_DOWN) {
+
+            View v = getCurrentFocus();
+            if ( v instanceof EditText) {
+
+
+                Rect outRect = new Rect();
+                v.getGlobalVisibleRect(outRect);
+                if (!outRect.contains((int)event.getRawX(), (int)event.getRawY())) {
+                    v.clearFocus();
+                    InputMethodManager imm = (InputMethodManager) getSystemService(Context.INPUT_METHOD_SERVICE);
+                    imm.hideSoftInputFromWindow(v.getWindowToken(), 0);
+                }
+            }
+        }
+        return super.dispatchTouchEvent( event );
     }
 }

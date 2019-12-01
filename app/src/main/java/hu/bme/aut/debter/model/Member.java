@@ -21,7 +21,7 @@ public class Member {
     public Member (String id, String name, List<Debt> debts) {
         this.id = id;
         this.debts = debts;
-        this.user = new User(name, "", new ArrayList<>());
+        this.user = new User(name, "");
     }
 
     public String getId() {

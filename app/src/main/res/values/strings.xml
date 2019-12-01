@@ -73,6 +73,10 @@
     <string name="save_changes">Save changes</string>
     <string name="password_again">Password again</string>
     <string name="registration">Registration</string>
+    <string name="room_activity">RoomActivity</string>
+    <string name="home_activity">HomeActivity</string>
+    <string name="login_activity">LoginActivity</string>
+    <string name="debter">Debter.</string>
 
     <string-array name="rounding">
         <item>0.01</item>

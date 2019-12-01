@@ -1,7 +1,6 @@
 package hu.bme.aut.debter.fragments;
 
 import android.os.Bundle;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -9,15 +8,14 @@ import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
-import androidx.lifecycle.ViewModelProviders;
 import androidx.navigation.NavOptions;
 import androidx.navigation.Navigation;
 
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
 import hu.bme.aut.debter.R;
-import hu.bme.aut.debter.data.RoomDataSource;
-import hu.bme.aut.debter.data.UserDataSource;
+import hu.bme.aut.debter.data.services.RoomDataSource;
+import hu.bme.aut.debter.data.services.UserDataSource;
 import hu.bme.aut.debter.helper.Formatter;
 import hu.bme.aut.debter.model.Debt;
 import hu.bme.aut.debter.model.DebterRoom;

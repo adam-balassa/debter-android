@@ -41,7 +41,7 @@ public class Formatter {
         List<String> seperatedDigits = new LinkedList<>();
         boolean negative = value < 0;
         double hundredth = Math.round(value * 10 - Math.floor(value) * 100);
-        int n = (int) Math.floor(value) * (negative ? -1 : 1);
+        int n = (int)Math.round(Math.floor(value)) * (negative ? -1 : 1);
 
         while (true) {
             int digits = n % 1000;
@@ -58,7 +58,10 @@ public class Formatter {
         if (negative)
             seperatedDigits.set(0, "-" + seperatedDigits.get(0));
 
-        return join(seperatedDigits);
+        String res = join(seperatedDigits);
+        if (hundredth > 0.0001)
+            res += "." + hundredth;
+        return res;
     }
 
     private static String addZeros(int n) {

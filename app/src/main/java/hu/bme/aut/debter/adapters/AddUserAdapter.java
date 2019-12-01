@@ -10,7 +10,7 @@ import androidx.annotation.Nullable;
 import java.util.LinkedList;
 import java.util.List;
 
-import hu.bme.aut.debter.data.UsersDataSource;
+import hu.bme.aut.debter.data.services.UsersDataSource;
 import hu.bme.aut.debter.model.User;
 
 

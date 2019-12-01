@@ -2,22 +2,20 @@ package hu.bme.aut.debter;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Context;
 import android.content.Intent;
+import android.graphics.Rect;
+import android.inputmethodservice.InputMethodService;
 import android.os.Bundle;
+import android.view.MotionEvent;
 import android.view.View;
+import android.view.inputmethod.InputMethodManager;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.LinearLayout;
 import android.widget.TextView;
-
-import java.util.LinkedList;
-import java.util.List;
-
-import hu.bme.aut.debter.data.APIRoutes;
-import hu.bme.aut.debter.data.DebterAPI;
-import hu.bme.aut.debter.data.UserDataSource;
-import hu.bme.aut.debter.model.Room;
-import hu.bme.aut.debter.model.User;
+import hu.bme.aut.debter.data.api.DebterAPI;
+import hu.bme.aut.debter.data.services.UserDataSource;
 
 public class LoginActivity extends AppCompatActivity {
 
@@ -45,28 +43,38 @@ public class LoginActivity extends AppCompatActivity {
         EditText password = findViewById(R.id.password);
 
         progress.setVisibility(View.VISIBLE);
-        final APIRoutes api = DebterAPI.getInstance().getDebter();
-        // api.login(new APIRoutes.LoginData(email.getText().toString(), password.getText().toString())).
-        api.login(new APIRoutes.LoginData("balassaadi@gmail.com", "password")).
-            enqueue( new DebterAPI.DebterCallback<>((call, response) -> {
-                User user = response.body().data.getUser();
-                UserDataSource.getInstance().setLoggedUser(user);
-                api.getUsersRooms(user.getEmail()).enqueue(new DebterAPI.DebterCallback<>((call2, response2) -> {
-                    List<APIRoutes.RoomResult> result = response2.body().data;
-                    List<Room> rooms = new LinkedList<>();
-                    for (APIRoutes.RoomResult room : result)
-                        rooms.add(room.getRoom());
-                    user.setRooms(rooms);
 
+        UserDataSource.getInstance().login(email.getText().toString(), password.getText().toString(),
+                new DebterAPI.DebterCallback<>((call, response) -> {
                     runOnUiThread(() -> progress.setVisibility(View.GONE));
                     Intent intent = new Intent(this, HomeActivity.class);
+                    intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_NEW_TASK);
                     startActivity(intent);
+                    finish();
+                }, (call, throwable)-> {
+                    runOnUiThread(() -> progress.setVisibility(View.GONE));
+                    email.setError("Wrong email or password");
                 }));
-            }, (call, error) -> {
-                runOnUiThread(() -> progress.setVisibility(View.GONE));
-                email.setError("Wrong email or password");
+    }
+
+    @Override
+    public boolean dispatchTouchEvent(MotionEvent event) {
+        if (event.getAction() == MotionEvent.ACTION_DOWN) {
+
+            View v = getCurrentFocus();
+            if ( v instanceof EditText) {
+
+
+                Rect outRect = new Rect();
+                v.getGlobalVisibleRect(outRect);
+                if (!outRect.contains((int)event.getRawX(), (int)event.getRawY())) {
+                    v.clearFocus();
+                    InputMethodManager imm = (InputMethodManager) getSystemService(Context.INPUT_METHOD_SERVICE);
+                    imm.hideSoftInputFromWindow(v.getWindowToken(), 0);
+                }
             }
-        ));
+        }
+        return super.dispatchTouchEvent( event );
     }
 
 }
